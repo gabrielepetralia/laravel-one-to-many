@@ -34,9 +34,8 @@
             </a>
           </th>
           <th scope="col" class="text-start w-25">Name</th>
+          <th scope="col">Type</th>
           <th scope="col">Is Finished</th>
-          <th scope="col">Start Date</th>
-          <th scope="col">End Date</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -47,17 +46,12 @@
           <th scope="row">{{ $project->id }}</th>
           <td class="text-start">{{ $project->name }}</td>
 
-          <td class="fs-5 {{ $project->is_finished ? 'text-success' : 'text-danger' }}">
-            {!! $project->is_finished ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-xmark"></i>' !!}
+          <td>
+            <span class="badge bg-danger">{{ $project->type->name }}</span>
           </td>
 
-          @php
-            $start_date = date_create($project->start_date);
-            if(!empty($project->end_date)) $end_date = date_create($project->end_date);
-          @endphp
-          <td>{{ date_format($start_date,"d/m/Y") }}</td>
-          <td class="{{ $project->end_date ? '' : 'text-danger' }}" >
-            {{ $project->end_date ? date_format($end_date,"d/m/Y") : 'Date not available' }}
+          <td class="fs-5 {{ $project->is_finished ? 'text-success' : 'text-danger' }}">
+            {!! $project->is_finished ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-xmark"></i>' !!}
           </td>
 
           <td>

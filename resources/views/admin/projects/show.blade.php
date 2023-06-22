@@ -17,18 +17,28 @@
           <td>{{ $project->name }}</td>
         </tr>
         <tr>
-          <td class="fw-semibold w-25">Image :</td>
+          <td class="fw-semibold">Image :</td>
           <td>
             <img class="w-50" src="{{ asset('storage/' . $project->img_path) }}" alt="{{ $project->name }}" onerror=" this.src = '/img/noimage.png' ">
           </td>
         </tr>
         <tr>
-          <td class="fw-semibold w-25">Description :</td>
+          <td class="fw-semibold">Description :</td>
           <td class="{{ empty($project->description) ? 'text-danger' : '' }}">
             @if(!empty($project->description))
               {!! $project->description !!}
             @else
               Description not available
+            @endif
+          </td>
+        </tr>
+        <tr>
+          <td class="fw-semibold">Type :</td>
+          <td class="{{ empty($project->type->name) ? 'text-danger' : '' }}">
+            @if(!empty($project->type->name))
+              <span class="badge bg-danger">{{ $project->type->name }}</span>
+            @else
+              Type not available
             @endif
           </td>
         </tr>

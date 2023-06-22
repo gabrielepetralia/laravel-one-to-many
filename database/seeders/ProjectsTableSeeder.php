@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -22,6 +23,7 @@ class ProjectsTableSeeder extends Seeder
     for ($i = 0; $i < 50; $i++) {
       $new_project = new Project();
 
+      $new_project->type_id = Type::inRandomOrder()->first()->id;
       $new_project->name = str_replace(".", "", $faker->sentence(3));
       $new_project->slug = CustomHelper::generateUniqueSlug($new_project->name, new Project());
       $new_project->description = $faker->text(1000);

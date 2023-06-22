@@ -20,4 +20,9 @@ class Project extends Model
     'img_path',
     'img_original_name'
   ];
+
+  public function type()
+  {
+    return $this->belongsTo(Type::class);
+  }
 }

@@ -61,11 +61,13 @@ class ProjectController extends Controller
         $form_data['img_original_name'] = $request->file('img')->getClientOriginalName();
       }
 
-      $new_project = new Project();
+      // $new_project = new Project();
 
-      $new_project->fill($form_data);
+      // $new_project->fill($form_data);
 
-      $new_project->save();
+      // $new_project->save();
+
+      $new_project = Project::create($form_data);
 
       return redirect()->route('admin.projects.show', $new_project);
     }

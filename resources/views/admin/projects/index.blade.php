@@ -46,8 +46,12 @@
           <th scope="row">{{ $project->id }}</th>
           <td class="text-start">{{ $project->name }}</td>
 
-          <td>
-            <span class="badge bg-danger">{{ $project->type->name }}</span>
+          <td class="text-danger">
+            @if(!empty($project->type->name))
+              <span class="badge bg-danger">{{ $project->type->name }}</span>
+            @else
+              Type not available
+            @endif
           </td>
 
           <td class="fs-5 {{ $project->is_finished ? 'text-success' : 'text-danger' }}">

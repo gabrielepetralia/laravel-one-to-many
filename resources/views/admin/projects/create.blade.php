@@ -37,6 +37,18 @@
       </div>
 
       <div class="mb-3">
+        <label for="type_id" class="form-label text-white fw-semibold">Type : </label>
+          <select class="form-select w-25" name="type_id">
+            <option selected value="">Select project type</option>
+
+            @foreach ($types as $type)
+              <option value="{{ $type->id }}" @if( $type->id == old('type_id') ) selected @endif>{{ $type->name }}</option>
+            @endforeach
+
+          </select>
+      </div>
+
+      <div class="mb-3">
         <label for="img" class="form-label text-white fw-semibold">Image : </label>
         <input
           class="form-control w-25"

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified'])
     Route::get('/', [DashboardController::class, 'index'])->name('home');
     Route::resource('projects', ProjectController::class);
     Route::get('orderby/{direction}', [ProjectController::class, 'orderBy'])->name('orderby');
+  Route::resource('types', TypeController::class);
   });
 
 require __DIR__.'/auth.php';

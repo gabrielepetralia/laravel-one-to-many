@@ -23,12 +23,12 @@
       @csrf
 
       <div class="mb-3">
-          <label for="name" class="form-label text-white fw-semibold @error('name') is-invalid @enderror">Name : <span class="text-danger">*</span></label>
-          <input id="name" class="form-control" name="name" placeholder="Project Name" type="text" value="{{ old('name') }}">
+        <label for="name" class="form-label text-white fw-semibold">Name : <span class="text-danger">*</span></label>
+        <input id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Project Name" type="text" value="{{ old('name') }}">
 
-          @error('name')
-              <p class="text-danger mt-2">{{ $message }}</p>
-          @enderror
+        @error('name')
+            <p class="text-danger mt-2">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-3">
@@ -38,14 +38,14 @@
 
       <div class="mb-3">
         <label for="type_id" class="form-label text-white fw-semibold">Type : </label>
-          <select class="form-select w-25" name="type_id">
-            <option selected value="">Select project type</option>
+        <select class="form-select w-25" name="type_id">
+          <option selected value="">Select project type</option>
 
-            @foreach ($types as $type)
-              <option value="{{ $type->id }}" @if( $type->id == old('type_id') ) selected @endif>{{ $type->name }}</option>
-            @endforeach
+          @foreach ($types as $type)
+            <option value="{{ $type->id }}" @if( $type->id == old('type_id') ) selected @endif>{{ $type->name }}</option>
+          @endforeach
 
-          </select>
+        </select>
       </div>
 
       <div class="mb-3">
@@ -71,21 +71,17 @@
       </div>
 
       <div class="mb-3">
-          <label for="start_date" class="form-label text-white fw-semibold @error('start_date') is-invalid @enderror">Start Date : <span class="text-danger">*</span></label>
-          <input id="start_date" class="form-control w-25" name="start_date" type="date" value="{{ old('start_date') }}">
+        <label for="start_date" class="form-label text-white fw-semibold">Start Date : <span class="text-danger">*</span></label>
+        <input id="start_date" class="form-control w-25 @error('start_date') is-invalid @enderror" name="start_date" type="date" value="{{ old('start_date') }}">
 
-          @error('start_date')
-              <p class="text-danger mt-2">{{ $message }}</p>
-          @enderror
+        @error('start_date')
+            <p class="text-danger mt-2">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-3">
-          <label for="end_date" class="form-label text-white fw-semibold @error('end_date') is-invalid @enderror">End Date : </label>
-          <input id="end_date" class="form-control w-25" name="end_date" type="date" value="{{ old('end_date') }}">
-
-          @error('end_date')
-              <p class="text-danger mt-2">{{ $message }}</p>
-          @enderror
+        <label for="end_date" class="form-label text-white fw-semibold">End Date : </label>
+        <input id="end_date" class="form-control w-25" name="end_date" type="date" value="{{ old('end_date') }}">
       </div>
 
       <div class="d-flex justify-content-between">
@@ -93,7 +89,7 @@
           <a href="{{ route('admin.projects.index')}}" title="Go back" class="btn btn-primary text-white"><i class="fa-solid fa-left-long"></i></a>
         </div>
 
-        <button type="submit" class="btn btn-success text-white"><i class="fa-solid fa-floppy-disk"></i></button>
+        <button type="submit" class="btn btn-success text-white" title="Create"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
 
     </form>
